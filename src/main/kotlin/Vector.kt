@@ -1,6 +1,7 @@
 package pl.edu.amu.wmi.students.mario.arithmeticmodel
 
 import java.util.*
+import kotlin.math.sqrt
 
 class Vector(vararg val complexNumbers: ComplexNumber) {
     operator fun plus(other: Vector): Vector {
@@ -37,6 +38,8 @@ class Vector(vararg val complexNumbers: ComplexNumber) {
             .mapIndexed { index, complexNumber -> complexNumber * other.complexNumbers[index].conjugate()}
             .reduce{ a, b -> a + b}
     }
+
+    fun norm(): Double = sqrt(scalarProduct(this).realPart)
 
     operator fun times(scalar: ComplexNumber): Vector {
         return Vector(*complexNumbers.map { it * scalar }.toTypedArray())
