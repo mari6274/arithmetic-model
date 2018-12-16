@@ -36,4 +36,6 @@ data class ComplexNumber(val realPart: Double, val imaginaryPart: Double) {
     override fun toString(): String {
         return "($realPart, $imaginaryPart)"
     }
+
+    operator fun unaryMinus(): ComplexNumber = this * ComplexNumber(-1.0, 0.0)
 }
